@@ -1,4 +1,5 @@
 import { Schema } from 'mongoose';
+import { TiposSchema } from 'src/tipos/schemas/tipos.schema';
 
 export const ProductosSchema = new Schema ({
 

@@ -10,11 +10,7 @@ export class TiposController {
     async getTiposlista(@Res() res){
         const tipos = await this.TiposService.getTipos();
 
-        return res.status(HttpStatus.OK).json({
-            message : 'Tipos Listados',
-            data : tipos
-
-        });
+        return res.status(HttpStatus.OK).send(tipos);
 
     }
 
@@ -24,10 +20,7 @@ export class TiposController {
 
         const tipos = await this.TiposService.createTipos(CreateTiposDTO);
 
-        return res.status(HttpStatus.CREATED).json({
-            message : 'tipo Creado',
-            data : tipos
-        });
+        return res.status(HttpStatus.CREATED).send(tipos);
 
     }
 
@@ -38,10 +31,7 @@ export class TiposController {
         if(!tipos){
             throw new NotFoundException ('El tipo no existe');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Tipo Encontrado',
-            data : tipos
-        });
+        return res.status(HttpStatus.OK).send(tipos);
     }
 
     @Put('update/:tiposId')
@@ -51,10 +41,7 @@ export class TiposController {
         if(!updateTipos){
             throw new NotFoundException ('El tipo no existe');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Tipo actualizado',
-            data : updateTipos
-        });
+        return res.status(HttpStatus.OK).send(updateTipos);
     }
 
 
@@ -65,10 +52,7 @@ export class TiposController {
         if(!delTipos){
             throw new NotFoundException ('El Tipo no existe, confirme el ID');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Tipo eliminado',
-            data : delTipos
-        });
+        return res.status(HttpStatus.OK).send(delTipos);
 
 
     }

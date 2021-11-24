@@ -10,11 +10,7 @@ export class ProductosController {
     async getproductoslista(@Res() res){
         const productos = await this.ProductosService.getProductos();
 
-        return res.status(HttpStatus.OK).json({
-            message : 'Productos Listados',
-            data : productos
-
-        });
+        return res.status(HttpStatus.OK).send(productos);
 
     }
      
@@ -23,10 +19,7 @@ export class ProductosController {
 
         const productos = await this.ProductosService.createProductos(CreateProductosDTO);
 
-        return res.status(HttpStatus.CREATED).json({
-            message : 'Producto Creado',
-            data : productos
-        });
+        return res.status(HttpStatus.CREATED).send(productos);
 
     }
 
@@ -37,10 +30,7 @@ export class ProductosController {
         if(!productos){
             throw new NotFoundException ('El producto no existe');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Producto Encontrado',
-            data : productos
-        });
+        return res.status(HttpStatus.OK).send(productos);
     }
 
     //Patch se usa cuando quiero actualzar un campo del obdjeto y el put cunado quiero cambiar todos los cambios
@@ -52,10 +42,7 @@ export class ProductosController {
         if(!updateProductos){
             throw new NotFoundException ('El producto no existe');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Producto actualizado',
-            data : updateProductos
-        });
+        return res.status(HttpStatus.OK).send(updateProductos);
     }
 
     @Delete('/delete')
@@ -65,10 +52,7 @@ export class ProductosController {
         if(!delProductos){
             throw new NotFoundException ('El producto no existe, confirme el ID');
         }
-        return res.status(HttpStatus.OK).json({
-            message : 'Producto eliminado',
-            data : delProductos
-        });
+        return res.status(HttpStatus.OK).send(delProductos);
 
 
     }
