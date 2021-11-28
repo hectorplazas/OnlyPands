@@ -36,7 +36,7 @@ export class ProductosController {
     //Patch se usa cuando quiero actualzar un campo del obdjeto y el put cunado quiero cambiar todos los cambios
 
     @Put('update/:productosId')
-    async updateProductos(@Res() res, @Body() CreateProductosDTO : CreateProductosDTO, @Param('productosId') id){
+    async updateProductos(@Res() res, @Body() CreateProductosDTO : CreateProductosDTO, @Param('productosId') id:number){
         const updateProductos = await this.ProductosService.updateProductosbyID(id, CreateProductosDTO);
 
         if(!updateProductos){
@@ -46,7 +46,7 @@ export class ProductosController {
     }
 
     @Delete('/delete')
-    async deleteProductos(@Res() res, @Query('productoId')id){
+    async deleteProductos(@Res() res, @Query('productoId')id:number){
         const delProductos = await this.ProductosService.deleteProductosbyID(id);
 
         if(!delProductos){

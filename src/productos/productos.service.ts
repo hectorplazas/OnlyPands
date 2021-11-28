@@ -20,19 +20,19 @@ export class ProductosService {
         return productos;
     }
 
-    async getProductosbyID(productoId : string):Promise<Iproductos> {
-        const productos = await this.productosModel.findById(productoId);
+    async getProductosbyID(productoId : number):Promise<Iproductos> {
+        const productos = await this.productosModel.findOne({IdProd:productoId});
         return productos;
     }
 
 
-    async updateProductosbyID(productoId : String, CreateProductosDTO: CreateProductosDTO):Promise<Iproductos> {
-        const updateProductos = await this.productosModel.findByIdAndUpdate(productoId, CreateProductosDTO, {new:true});
+    async updateProductosbyID(productoId : number, CreateProductosDTO: CreateProductosDTO):Promise<Iproductos> {
+        const updateProductos = await this.productosModel.findOneAndUpdate({IdProd:productoId}, CreateProductosDTO,{new:true});
         return updateProductos; 
     }
 
-    async deleteProductosbyID(productoId : string):Promise<Iproductos> {
-        const deleteProductos = await this.productosModel.findByIdAndDelete(productoId);
+    async deleteProductosbyID(productoId : number):Promise<Iproductos> {
+        const deleteProductos = await this.productosModel.findOneAndDelete({IdProd:productoId});
         return deleteProductos; 
     }
 
