@@ -9,7 +9,7 @@ import { TiposModule } from './tipos/tipos.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://only:only@cluster0.ecvtp.mongodb.net/onlypans',{useNewUrlParser: true
+    MongooseModule.forRoot('mongodb+srv://admin:<password>@cluster0.ejijx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',{useNewUrlParser: true
   
   }),
     ProductosModule,
